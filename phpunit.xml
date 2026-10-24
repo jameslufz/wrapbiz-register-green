@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
+         bootstrap="vendor/autoload.php"
+         colors="true"
+>
+    <testsuites>
+        <testsuite name="Unit">
+            <directory>tests/Unit</directory>
+        </testsuite>
+        <testsuite name="Feature">
+            <directory>tests/Feature</directory>
+        </testsuite>
+        <testsuite name="Integration">
+            <directory>tests/Integration</directory>
+        </testsuite>
+    </testsuites>
+    <source>
+        <include>
+            <directory>app</directory>
+        </include>
+    </source>
+    <php>
+        <env name="APP_ENV" value="testing"/>
+        <env name="APP_MAINTENANCE_DRIVER" value="file"/>
+        <env name="BCRYPT_ROUNDS" value="4"/>
+        <env name="BROADCAST_CONNECTION" value="null"/>
+        <env name="CACHE_STORE" value="array"/>
+        <env name="DB_CONNECTION" value="sqlite"/>
+        <env name="DB_DATABASE" value=":memory:"/>
+        <env name="DB_URL" value=""/>
+        <env name="MAIL_MAILER" value="array"/>
+        <env name="QUEUE_CONNECTION" value="sync"/>
+        <env name="SESSION_DRIVER" value="array"/>
+        <env name="SESSION_ENCRYPT" value="true"/>
+        <!-- Never let a test reach the real bank or a real wrapbiz database, whatever .env holds. -->
+        <env name="KBIZ_BASE_URL" value="https://bank.invalid" force="true"/>
+        <env name="WRAPBIZ_DB_URL" value="" force="true"/>
+        <env name="WRAPBIZ_DB_HOST" value="127.0.0.1" force="true"/>
+        <env name="WRAPBIZ_DB_PORT" value="1" force="true"/>
+        <env name="WRAPBIZ_DB_DATABASE" value="wrapbiz_unreachable_in_tests" force="true"/>
+        <env name="WRAPBIZ_DB_USERNAME" value="nobody" force="true"/>
+        <env name="WRAPBIZ_DB_PASSWORD" value="unused" force="true"/>
+        <env name="WRAPBIZ_DB_SSLMODE" value="require" force="true"/>
+        <env name="PULSE_ENABLED" value="false"/>
+        <env name="TELESCOPE_ENABLED" value="false"/>
+        <env name="NIGHTWATCH_ENABLED" value="false"/>
+    </php>
+</phpunit>
